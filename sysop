@@ -1,0 +1,83 @@
+#!/usr/bin/env sh
+
+### Variaveis
+prgname="$0"
+version="1.0"
+
+### Funcoes
+sys_info() {
+
+        . /etc/os-release
+        totalPackages=$(dpkg-query -f '${binary:Package}\n' -W | wc -l)
+        echo "------------------------------------------------------"
+        echo "          System Information"
+        echo "------------------------------------------------------"
+        echo "Distribuition: $NAME"
+        echo "Version      : $VERSION_ID"
+        echo "Codename     : $VERSION_CODENAME"
+        echo "Kernel       : $(uname -r)"
+        echo "Uptime       : $(uptime -p)"
+        echo "Num Packages : $totalPackages packages"
+
+}
+
+who_is_online() {
+        echo "------------------------------------------------------"
+        echo "           Who is online?                             "
+        echo "------------------------------------------------------"
+        who -H
+}
+
+list_logged_users() {
+        echo "------------------------------------------------------"
+        echo "          List Of Logged Users"
+        echo "------------------------------------------------------"
+        last
+}
+
+size_log() {
+        echo "------------------------------------------------------"
+        echo "          Size of: /var/log"
+        echo "------------------------------------------------------"
+        du -hs /var/log/* | sort -rh
+}
+
+clear_system() {
+        apt clean
+        apt autoremove
+}
+
+pause() {
+        printf "\n<ENTER TO CONTINUE>"
+        read go
+}
+
+### Menu
+while true
+do
+        clear
+        echo "------------------------------------------------------"
+        echo "          Main Menu $prgname - $version"
+        echo "------------------------------------------------------"
+        echo "1. Operation System info"
+        echo "2. Who is online?"
+        echo "3. Last logged users"
+        echo "4. Size (/var/log)"
+        echo "5. Clear System"
+        echo "E. Exit"
+
+        printf "Choice: "
+        read menuOP
+
+        ### Opcoes
+        case $menuOP in
+                1) sys_info ;;
+                2) who_is_online ;;
+                3) list_logged_users ;;
+                4) size_log ;;
+                5) clear_system ;;
+                E|e) exit 0 ;;
+
+        esac
+        pause
+done
