@@ -1,0 +1,17 @@
+#!/bin/bash
+
+touch main.cpp
+echo "#include <bits/stdc++.h>" >> main.cpp
+echo "" >> main.cpp
+echo "#define pb push_back" >> main.cpp
+echo "#define mk make_pair" >> main.cpp
+echo "#define fi first" >> main.cpp
+echo "#define se second" >> main.cpp
+echo "" >> main.cpp
+echo "using namespace std;" >> main.cpp
+echo "" >> main.cpp
+echo "int main() {" >> main.cpp
+echo "" >> main.cpp
+echo "  return 0;" >> main.cpp
+echo "" >> main.cpp
+echo "}" >> main.cpp
