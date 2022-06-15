@@ -12,6 +12,6 @@ echo "using namespace std;" >> main.cpp
 echo "" >> main.cpp
 echo "int main() {" >> main.cpp
 echo "" >> main.cpp
-echo "  return 0;" >> main.cpp
+echo "    return 0;" >> main.cpp
 echo "" >> main.cpp
 echo "}" >> main.cpp
